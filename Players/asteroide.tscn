@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cqdn7gyg3rmar"]
+
+[ext_resource type="Script" uid="uid://csbko2r3kqctk" path="res://Scripts/asteroide.gd" id="1_ump13"]
+[ext_resource type="Texture2D" uid="uid://c26m4ivyq4t7i" path="res://Assets/Mini Pixel Pack 3/asteroide.png" id="2_kufhb"]
+[ext_resource type="AudioStream" uid="uid://bg3b2prkkrtfj" path="res://Assets/audio/explosion.wav" id="3_kufhb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n1jbx"]
+radius = 64.12488
+
+[node name="asteroide" type="Area2D" unique_id=759790235 groups=["dano"]]
+collision_layer = 2
+collision_mask = 21
+script = ExtResource("1_ump13")
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=46925652]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_kufhb")
+
+[node name="collision" type="CollisionShape2D" parent="." unique_id=1696268378]
+position = Vector2(-2, 2)
+shape = SubResource("CircleShape2D_n1jbx")
+
+[node name="sound" type="Timer" parent="." unique_id=1549335950]
+wait_time = 0.05
+
+[node name="explosao" type="AudioStreamPlayer" parent="." unique_id=971668366]
+stream = ExtResource("3_kufhb")
+volume_db = 15.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="sound" to="." method="_on_sound_timeout"]

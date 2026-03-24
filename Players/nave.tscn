@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://bgbqb8h438ssp"]
+
+[ext_resource type="Script" uid="uid://bbpo2l7p12ph3" path="res://Scripts/nave.gd" id="1_aygd2"]
+[ext_resource type="Texture2D" uid="uid://da5etxwaftlj3" path="res://Assets/Mini Pixel Pack 3/Player ship/Player_ship (16 x 16).png" id="1_l8krw"]
+[ext_resource type="AudioStream" uid="uid://bsmi56vm7wlsp" path="res://Assets/audio/laser_sound.wav" id="3_jxpie"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aygd2"]
+atlas = ExtResource("1_l8krw")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxpie"]
+atlas = ExtResource("1_l8krw")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1dhn"]
+atlas = ExtResource("1_l8krw")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i4c8a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aygd2")
+}],
+"loop": true,
+"name": &"direita",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxpie")
+}],
+"loop": true,
+"name": &"esquerda",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1dhn")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8krw"]
+size = Vector2(16, 14)
+
+[node name="nave" type="Area2D" unique_id=1300883091]
+scale = Vector2(5, 5)
+collision_mask = 2
+script = ExtResource("1_aygd2")
+
+[node name="anim" type="AnimatedSprite2D" parent="." unique_id=1981610775]
+sprite_frames = SubResource("SpriteFrames_i4c8a")
+animation = &"idle"
+
+[node name="collision" type="CollisionShape2D" parent="." unique_id=1809020995]
+shape = SubResource("RectangleShape2D_l8krw")
+
+[node name="laser_sound" type="AudioStreamPlayer" parent="." unique_id=541599060]
+stream = ExtResource("3_jxpie")

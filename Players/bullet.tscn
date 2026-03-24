@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://37hu212f8lnl"]
+
+[ext_resource type="Texture2D" uid="uid://cx237j2xip074" path="res://Assets/Mini Pixel Pack 3/Projectiles/Player_charged_beam (16 x 16).png" id="1_fsiqy"]
+[ext_resource type="Script" uid="uid://hhh5l0wi8gvu" path="res://Scripts/bullet.gd" id="1_mk5wl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mk5wl"]
+atlas = ExtResource("1_fsiqy")
+region = Rect2(0, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4a8e"]
+atlas = ExtResource("1_fsiqy")
+region = Rect2(8, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e17a6"]
+atlas = ExtResource("1_fsiqy")
+region = Rect2(16, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2n0ru"]
+atlas = ExtResource("1_fsiqy")
+region = Rect2(24, 0, 8, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0wli5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mk5wl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4a8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e17a6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2n0ru")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5m5q4"]
+size = Vector2(4, 12)
+
+[node name="bullet" type="Area2D" unique_id=980902843]
+collision_layer = 16
+collision_mask = 10
+script = ExtResource("1_mk5wl")
+
+[node name="anim" type="AnimatedSprite2D" parent="." unique_id=390544441]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_0wli5")
+animation = &"idle"
+autoplay = "idle"
+frame = 1
+frame_progress = 0.053432833
+
+[node name="collision" type="CollisionShape2D" parent="." unique_id=1953702209]
+shape = SubResource("RectangleShape2D_5m5q4")

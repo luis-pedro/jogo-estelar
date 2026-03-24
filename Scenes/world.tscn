@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://dicjfo2sg03xd"]
+
+[ext_resource type="Script" uid="uid://bti33bfen7dar" path="res://Scripts/world.gd" id="1_8j60k"]
+[ext_resource type="PackedScene" uid="uid://bgbqb8h438ssp" path="res://Players/nave.tscn" id="1_a02cp"]
+[ext_resource type="Script" uid="uid://d1v67onlmoqwh" path="res://Scripts/background.gd" id="2_5a7ea"]
+[ext_resource type="Texture2D" uid="uid://bqqgyvm82ude3" path="res://Assets/Mini Pixel Pack 3/Space_BG (2 frames) (64 x 64).png" id="3_8j60k"]
+[ext_resource type="Script" uid="uid://btdcj6tt4htb7" path="res://Scripts/hud.gd" id="5_5ukr8"]
+[ext_resource type="Texture2D" uid="uid://bvcyg7y8xgvxy" path="res://Assets/Mini Pixel Pack 3/UI objects/Player_life_icon (16 x 16).png" id="6_o06y3"]
+[ext_resource type="FontFile" uid="uid://vq6hmod5bccy" path="res://Assets/Fontes/RevMiniPixel.ttf" id="7_o06y3"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_o06y3"]
+a = Vector2(-121, -21)
+b = Vector2(1362, -21)
+
+[node name="World" type="Node2D" unique_id=1634647844]
+script = ExtResource("1_8j60k")
+
+[node name="players" type="Node2D" parent="." unique_id=2122681354]
+
+[node name="nave" parent="players" unique_id=1300883091 instance=ExtResource("1_a02cp")]
+
+[node name="Background" type="ParallaxBackground" parent="." unique_id=750047535]
+script = ExtResource("2_5a7ea")
+
+[node name="BG" type="ParallaxLayer" parent="Background" unique_id=1801994915]
+motion_mirroring = Vector2(1280, 768)
+
+[node name="sprite" type="Sprite2D" parent="Background/BG" unique_id=152553242]
+position = Vector2(0, 384)
+scale = Vector2(10, 12)
+texture = ExtResource("3_8j60k")
+
+[node name="criarAsteroides" type="Timer" parent="." unique_id=1414712550]
+wait_time = 3.0
+autostart = true
+
+[node name="aumentaVelocidade" type="Timer" parent="." unique_id=642812730]
+wait_time = 5.0
+autostart = true
+
+[node name="mostradores" type="Control" parent="." unique_id=216669840]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1280.0
+offset_bottom = 768.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_5ukr8")
+
+[node name="container" type="MarginContainer" parent="mostradores" unique_id=926882918]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 15
+
+[node name="life_container" type="HBoxContainer" parent="mostradores/container" unique_id=398122994]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="life_icon" type="TextureRect" parent="mostradores/container/life_container" unique_id=1380758034]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("6_o06y3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="life_counter" type="ProgressBar" parent="mostradores/container/life_container" unique_id=1193530499]
+modulate = Color(1, 0, 0, 1)
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+size_flags_vertical = 4
+show_percentage = false
+
+[node name="point_container" type="HBoxContainer" parent="mostradores/container" unique_id=16210218]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="point_label" type="Label" parent="mostradores/container/point_container" unique_id=165954709]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("7_o06y3")
+theme_override_font_sizes/font_size = 24
+text = "Pontuação:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="point_counter" type="Label" parent="mostradores/container/point_container" unique_id=2055086652]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("7_o06y3")
+theme_override_font_sizes/font_size = 24
+text = "0000"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ground" type="Area2D" parent="." unique_id=551694434]
+position = Vector2(-7, 529)
+collision_layer = 4
+collision_mask = 2
+metadata/_edit_group_ = true
+
+[node name="collisionCeu" type="CollisionShape2D" parent="ground" unique_id=1876333769]
+shape = SubResource("SegmentShape2D_o06y3")
+
+[connection signal="timeout" from="criarAsteroides" to="." method="_on_criar_asteroides_timeout"]
+[connection signal="timeout" from="aumentaVelocidade" to="." method="_on_aumenta_velocidade_timeout"]
+[connection signal="area_entered" from="ground" to="." method="_on_ceu_area_entered"]
+[connection signal="area_entered" from="ground" to="." method="_on_ground_area_entered"]
