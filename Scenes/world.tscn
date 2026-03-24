@@ -106,6 +106,17 @@ text = "0000"
 horizontal_alignment = 2
 vertical_alignment = 1
 
+[node name="rounds" type="Control" parent="." unique_id=37022985]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="round_label" type="Label" parent="rounds" unique_id=231925668]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
 [node name="ground" type="Area2D" parent="." unique_id=551694434]
 position = Vector2(23, 928)
 collision_layer = 4
