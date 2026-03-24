@@ -7,6 +7,3 @@ func _process(delta):
 	
 	if position.y < -50:
 		queue_free()
-		
-	#if(is_in_group(dano)):
-		#pass

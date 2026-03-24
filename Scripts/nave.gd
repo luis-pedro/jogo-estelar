@@ -26,3 +26,6 @@ func _atirar():
 	tiro.global_position = Vector2(global_position.x, global_position.y - 35)
 	get_tree().current_scene.add_child(tiro)
 	laser_sound.play()
+
+func _on_area_entered(area: Area2D) -> void: #Quando o asteroide colide com a navee
+	$"/root/Global".nVida -= 1

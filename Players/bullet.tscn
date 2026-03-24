@@ -42,7 +42,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5m5q4"]
 size = Vector2(4, 12)
 
-[node name="bullet" type="Area2D" unique_id=980902843]
+[node name="bullet" type="Area2D" unique_id=980902843 groups=["bullet"]]
 collision_layer = 16
 collision_mask = 10
 script = ExtResource("1_mk5wl")

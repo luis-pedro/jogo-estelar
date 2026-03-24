@@ -60,3 +60,5 @@ shape = SubResource("RectangleShape2D_l8krw")
 
 [node name="laser_sound" type="AudioStreamPlayer" parent="." unique_id=541599060]
 stream = ExtResource("3_jxpie")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

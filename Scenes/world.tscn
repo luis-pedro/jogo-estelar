@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://btdcj6tt4htb7" path="res://Scripts/hud.gd" id="5_5ukr8"]
 [ext_resource type="Texture2D" uid="uid://bvcyg7y8xgvxy" path="res://Assets/Mini Pixel Pack 3/UI objects/Player_life_icon (16 x 16).png" id="6_o06y3"]
 [ext_resource type="FontFile" uid="uid://vq6hmod5bccy" path="res://Assets/Fontes/RevMiniPixel.ttf" id="7_o06y3"]
+[ext_resource type="AudioStream" uid="uid://dnarnirouk20i" path="res://Assets/audio/backgound2.wav" id="8_k7acu"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_o06y3"]
 a = Vector2(-121, -21)
@@ -106,13 +107,17 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="ground" type="Area2D" parent="." unique_id=551694434]
-position = Vector2(-7, 529)
+position = Vector2(23, 928)
 collision_layer = 4
 collision_mask = 2
 metadata/_edit_group_ = true
 
 [node name="collisionCeu" type="CollisionShape2D" parent="ground" unique_id=1876333769]
 shape = SubResource("SegmentShape2D_o06y3")
+
+[node name="bg_sound" type="AudioStreamPlayer" parent="." unique_id=1640778390]
+stream = ExtResource("8_k7acu")
+autoplay = true
 
 [connection signal="timeout" from="criarAsteroides" to="." method="_on_criar_asteroides_timeout"]
 [connection signal="timeout" from="aumentaVelocidade" to="." method="_on_aumenta_velocidade_timeout"]

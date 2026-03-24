@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Estelar"
+config/name="Estelar ( GitHub )"
 run/main_scene="uid://dicjfo2sg03xd"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
@@ -28,6 +28,7 @@ window/size/viewport_height=768
 
 collision=""
 dano=""
+bullet=""
 
 [input]
 

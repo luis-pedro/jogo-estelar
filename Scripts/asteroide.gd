@@ -11,7 +11,7 @@ func _ready():
 func _process(delta):
 	move_local_y(delta * $"/root/Global".velAsteroide)
 
-func _on_area_entered(area: Area2D) -> void:
+func _on_area_entered(area: Area2D) -> void: #quando o bullet entra em contato
 	$explosao.play()
 	$sound.start()
 	$"/root/Global".pontos = $"/root/Global".pontos + 1
