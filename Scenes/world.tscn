@@ -16,28 +16,31 @@ b = Vector2(1362, -21)
 [node name="World" type="Node2D" unique_id=1634647844]
 script = ExtResource("1_8j60k")
 
-[node name="players" type="Node2D" parent="." unique_id=2122681354]
+[node name="control" type="Control" parent="." unique_id=37022985]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 
-[node name="nave" parent="players" unique_id=1300883091 instance=ExtResource("1_a02cp")]
-
-[node name="Background" type="ParallaxBackground" parent="." unique_id=750047535]
-script = ExtResource("2_5a7ea")
-
-[node name="BG" type="ParallaxLayer" parent="Background" unique_id=1801994915]
-motion_mirroring = Vector2(1280, 768)
-
-[node name="sprite" type="Sprite2D" parent="Background/BG" unique_id=152553242]
-position = Vector2(0, 384)
-scale = Vector2(10, 12)
-texture = ExtResource("3_8j60k")
-
-[node name="criarAsteroides" type="Timer" parent="." unique_id=1414712550]
-wait_time = 3.0
-autostart = true
-
-[node name="aumentaVelocidade" type="Timer" parent="." unique_id=642812730]
-wait_time = 5.0
-autostart = true
+[node name="round_label" type="Label" parent="control" unique_id=231925668]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 580.0
+offset_top = 69.0
+offset_right = 704.0
+offset_bottom = 101.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("7_o06y3")
+theme_override_font_sizes/font_size = 32
+text = "ROUND 1"
 
 [node name="mostradores" type="Control" parent="." unique_id=216669840]
 layout_mode = 3
@@ -106,16 +109,28 @@ text = "0000"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="rounds" type="Control" parent="." unique_id=37022985]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="players" type="Node2D" parent="." unique_id=2122681354]
 
-[node name="round_label" type="Label" parent="rounds" unique_id=231925668]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="nave" parent="players" unique_id=1300883091 instance=ExtResource("1_a02cp")]
+
+[node name="Background" type="ParallaxBackground" parent="." unique_id=750047535]
+script = ExtResource("2_5a7ea")
+
+[node name="BG" type="ParallaxLayer" parent="Background" unique_id=1801994915]
+motion_mirroring = Vector2(1280, 768)
+
+[node name="sprite" type="Sprite2D" parent="Background/BG" unique_id=152553242]
+position = Vector2(0, 384)
+scale = Vector2(10, 12)
+texture = ExtResource("3_8j60k")
+
+[node name="criarAsteroides" type="Timer" parent="." unique_id=1414712550]
+wait_time = 3.0
+autostart = true
+
+[node name="aumentaVelocidade" type="Timer" parent="." unique_id=642812730]
+wait_time = 5.0
+autostart = true
 
 [node name="ground" type="Area2D" parent="." unique_id=551694434]
 position = Vector2(23, 928)
@@ -128,7 +143,6 @@ shape = SubResource("SegmentShape2D_o06y3")
 
 [node name="bg_sound" type="AudioStreamPlayer" parent="." unique_id=1640778390]
 stream = ExtResource("8_k7acu")
-autoplay = true
 
 [connection signal="timeout" from="criarAsteroides" to="." method="_on_criar_asteroides_timeout"]
 [connection signal="timeout" from="aumentaVelocidade" to="." method="_on_aumenta_velocidade_timeout"]
