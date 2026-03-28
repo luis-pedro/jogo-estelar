@@ -65,6 +65,6 @@ autoplay = "explode"
 
 [node name="explosao" type="AudioStreamPlayer" parent="." unique_id=34028744]
 stream = ExtResource("3_ec3k2")
-volume_db = 20.0
+volume_db = 24.0
 
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
