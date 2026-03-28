@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://ccy8qworfv4cm"]
+
+[ext_resource type="Texture2D" uid="uid://li8rn5f5duyr" path="res://Assets/Mini Pixel Pack 3/Effects/Explosion (16 x 16).png" id="1_cho3l"]
+[ext_resource type="Script" uid="uid://cm4hefbxkeiyi" path="res://Scripts/explosion.gd" id="1_o6prt"]
+[ext_resource type="AudioStream" uid="uid://bg3b2prkkrtfj" path="res://Assets/audio/explosion.wav" id="3_ec3k2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6prt"]
+atlas = ExtResource("1_cho3l")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ec3k2"]
+atlas = ExtResource("1_cho3l")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ruwr"]
+atlas = ExtResource("1_cho3l")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sa0n5"]
+atlas = ExtResource("1_cho3l")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfegn"]
+atlas = ExtResource("1_cho3l")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2qux"]
+atlas = ExtResource("1_cho3l")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gl5fy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6prt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ec3k2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ruwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sa0n5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfegn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2qux")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 6.0
+}]
+
+[node name="explosion" type="Area2D" unique_id=1190748224]
+script = ExtResource("1_o6prt")
+
+[node name="anim" type="AnimatedSprite2D" parent="." unique_id=1493918173]
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_gl5fy")
+animation = &"explode"
+autoplay = "explode"
+
+[node name="explosao" type="AudioStreamPlayer" parent="." unique_id=34028744]
+stream = ExtResource("3_ec3k2")
+volume_db = 20.0
+
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]

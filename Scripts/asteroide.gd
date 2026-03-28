@@ -1,5 +1,7 @@
 extends Area2D
 
+var explosion_scene = preload("res://Players/explosion.tscn")
+
 @onready var sound: Timer = $sound
 @onready var explosao: AudioStreamPlayer = $explosao
 
@@ -12,9 +14,13 @@ func _process(delta):
 	move_local_y(delta * $"/root/Global".velAsteroide)
 
 func _on_area_entered(area: Area2D) -> void: #quando o bullet entra em contato
-	$explosao.play()
-	$sound.start()
-	$"/root/Global".pontos = $"/root/Global".pontos + 1
-
-func _on_sound_timeout() -> void:
+	if area.is_in_group("bullet"):
+		$"/root/Global".pontos = $"/root/Global".pontos + 1
+		destruir()
+		
+func destruir():
+	var explosion = explosion_scene.instantiate()
+	explosion.global_position = global_position
+	get_tree().current_scene.add_child(explosion)
+	
 	queue_free()
