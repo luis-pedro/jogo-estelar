@@ -27,7 +27,8 @@ func _on_criar_asteroides_timeout() -> void:
 func _on_aumenta_velocidade_timeout() -> void:
 	$"/root/Global".velAsteroide = $"/root/Global".velAsteroide + 25
 
-#collisão do chão do cenário
+#Collisão do chão do cenário
+
 func _on_ground_area_entered(area: Area2D) -> void:
 	$"/root/Global".nVida -= 1
 	print($"/root/Global".nVida)
@@ -38,8 +39,10 @@ func update_round():
 		start_round(4)
 	elif $"/root/Global".pontos >= 30 and current_round != 3:
 		start_round(3)
+		print("colocar o criarEnemy02 aqui")
 	elif $"/root/Global".pontos >= 15 and current_round != 2:
 		start_round(2)
+		print("colocar o criarEnemy01 aqui")
 		
 func start_round(round):
 	current_round = round

@@ -144,6 +144,12 @@ shape = SubResource("SegmentShape2D_o06y3")
 [node name="bg_sound" type="AudioStreamPlayer" parent="." unique_id=1640778390]
 stream = ExtResource("8_k7acu")
 
+[node name="criarEnemy01" type="Timer" parent="." unique_id=608587333]
+wait_time = 5.0
+
+[node name="criarEnemy02" type="Timer" parent="." unique_id=599256157]
+wait_time = 7.0
+
 [connection signal="timeout" from="criarAsteroides" to="." method="_on_criar_asteroides_timeout"]
 [connection signal="timeout" from="aumentaVelocidade" to="." method="_on_aumenta_velocidade_timeout"]
 [connection signal="area_entered" from="ground" to="." method="_on_ceu_area_entered"]

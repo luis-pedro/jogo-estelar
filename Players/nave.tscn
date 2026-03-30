@@ -160,6 +160,7 @@ animations = [{
 }]
 
 [node name="nave" type="Area2D" unique_id=1300883091]
+position = Vector2(0, -10)
 scale = Vector2(5, 5)
 collision_mask = 2
 script = ExtResource("1_aygd2")

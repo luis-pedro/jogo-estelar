@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://d1k8viik88wys"]
+
+[ext_resource type="Texture2D" uid="uid://sascskbggvqx" path="res://Assets/Mini Pixel Pack 3/Enemies/Bon_Bon (16 x 16).png" id="1_6flgq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cy0sp"]
+atlas = ExtResource("1_6flgq")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t60dj"]
+atlas = ExtResource("1_6flgq")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_raqsj"]
+atlas = ExtResource("1_6flgq")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gsx0"]
+atlas = ExtResource("1_6flgq")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q5sbs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cy0sp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t60dj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_raqsj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gsx0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06wic"]
+size = Vector2(14, 8)
+
+[node name="enemy02" type="Area2D" unique_id=464912599]
+metadata/_edit_group_ = true
+
+[node name="anim" type="AnimatedSprite2D" parent="." unique_id=782800266]
+sprite_frames = SubResource("SpriteFrames_q5sbs")
+animation = &"idle"
+
+[node name="collision" type="CollisionShape2D" parent="." unique_id=177185017]
+shape = SubResource("RectangleShape2D_06wic")
