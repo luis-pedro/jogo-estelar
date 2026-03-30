@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d1k8viik88wys"]
 
 [ext_resource type="Texture2D" uid="uid://sascskbggvqx" path="res://Assets/Mini Pixel Pack 3/Enemies/Bon_Bon (16 x 16).png" id="1_6flgq"]
+[ext_resource type="Script" uid="uid://cuko0mfbnr8ag" path="res://Scripts/enemy_02.gd" id="1_cy0sp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cy0sp"]
 atlas = ExtResource("1_6flgq")
@@ -42,8 +43,10 @@ animations = [{
 size = Vector2(14, 8)
 
 [node name="enemy02" type="Area2D" unique_id=464912599]
+scale = Vector2(5, 5)
 collision_layer = 2
 collision_mask = 21
+script = ExtResource("1_cy0sp")
 metadata/_edit_group_ = true
 
 [node name="anim" type="AnimatedSprite2D" parent="." unique_id=782800266]
@@ -52,3 +55,5 @@ animation = &"idle"
 
 [node name="collision" type="CollisionShape2D" parent="." unique_id=177185017]
 shape = SubResource("RectangleShape2D_06wic")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

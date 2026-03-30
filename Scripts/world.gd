@@ -2,6 +2,7 @@ extends Node2D
 
 var asteroide = preload("res://Players/asteroide.tscn")
 var enemy01 = preload("res://Players/enemy_01.tscn")
+var enemy02 = preload("res://Players/enemy_02.tscn")
 
 var current_round = 1 #Controla os rounds
 
@@ -33,7 +34,14 @@ func _on_aumenta_velocidade_timeout() -> void:
 func _on_criar_enemy_01_timeout() -> void:
 	var alvo01 = enemy01.instantiate()
 	add_child(alvo01)
-
+	print("INIMIGO 1")
+	
+#Enemy02
+func _on_criar_enemy_02_timeout() -> void:
+	var alvo02 = enemy02.instantiate()
+	add_child(alvo02)
+	print("INIMIGO 2")
+	
 #Collisão do chão do cenário
 
 func _on_ground_area_entered(area: Area2D) -> void:
@@ -44,9 +52,9 @@ func _on_ground_area_entered(area: Area2D) -> void:
 func update_round():
 	if $"/root/Global".pontos >= 60 and current_round != 4:
 		start_round(4)
-	elif $"/root/Global".pontos >= 30 and current_round != 3:
+	elif $"/root/Global".pontos >= 10 and current_round != 3:
 		start_round(3)
-		print("colocar o criarEnemy02 aqui")
+		$criarEnemy02.start()
 	elif $"/root/Global".pontos >= 5 and current_round != 2:
 		start_round(2)
 		$criarEnemy01.start()
