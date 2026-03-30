@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://okla5ov1nhcj"]
 
 [ext_resource type="Texture2D" uid="uid://dul3qbxhpvwyo" path="res://Assets/Mini Pixel Pack 3/Enemies/Lips (16 x 16).png" id="1_64u0p"]
+[ext_resource type="Script" uid="uid://cph20adltfnjc" path="res://Scripts/enemy_01.gd" id="1_fqyqy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fqyqy"]
 atlas = ExtResource("1_64u0p")
@@ -46,14 +47,21 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n3ttp"]
-radius = 7.0
+radius = 34.234486
 
 [node name="enemy01" type="Area2D" unique_id=755786087]
+collision_layer = 2
+collision_mask = 21
+script = ExtResource("1_fqyqy")
 metadata/_edit_group_ = true
 
 [node name="anim" type="AnimatedSprite2D" parent="." unique_id=1290483353]
+scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_l6rle")
 animation = &"idle"
+autoplay = "idle"
 
 [node name="collision" type="CollisionShape2D" parent="." unique_id=1847927799]
 shape = SubResource("CircleShape2D_n3ttp")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

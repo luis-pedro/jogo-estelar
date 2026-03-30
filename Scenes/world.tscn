@@ -154,3 +154,4 @@ wait_time = 7.0
 [connection signal="timeout" from="aumentaVelocidade" to="." method="_on_aumenta_velocidade_timeout"]
 [connection signal="area_entered" from="ground" to="." method="_on_ceu_area_entered"]
 [connection signal="area_entered" from="ground" to="." method="_on_ground_area_entered"]
+[connection signal="timeout" from="criarEnemy01" to="." method="_on_criar_enemy_01_timeout"]
