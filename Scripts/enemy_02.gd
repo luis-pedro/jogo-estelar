@@ -1,5 +1,7 @@
 extends Area2D
 
+var sparkle_scene = preload("res://Players/sparkle.tscn")
+
 func _ready() -> void:
 	randomize()
 	self.global_position.x = randi_range(50, 1250)
@@ -13,5 +15,11 @@ func _on_area_entered(area: Area2D) -> void:
 		
 		$"/root/Global".pontos = $"/root/Global".pontos + 1
 		
-		#aqui é a função destruir do asteroide
-		queue_free() #apagar isso e revisar a função
+		destruir()
+
+func destruir():
+	var sparkle = sparkle_scene.instantiate()
+	sparkle.global_position = global_position
+	get_tree().current_scene.add_child(sparkle)
+	
+	queue_free()

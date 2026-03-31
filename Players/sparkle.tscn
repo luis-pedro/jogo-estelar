@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://c7yp2n2f41s5k"]
+
+[ext_resource type="Script" uid="uid://dvulha8jbuv0b" path="res://Scripts/sparkle.gd" id="1_j27fg"]
+[ext_resource type="Texture2D" uid="uid://kb00gxlqk13s" path="res://Assets/Mini Pixel Pack 3/Effects/Sparkle (16 x 16).png" id="2_rb2m3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yuncu"]
+atlas = ExtResource("2_rb2m3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1q8my"]
+atlas = ExtResource("2_rb2m3")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfhfp"]
+atlas = ExtResource("2_rb2m3")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vg4p6"]
+atlas = ExtResource("2_rb2m3")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3134u"]
+atlas = ExtResource("2_rb2m3")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_afqup"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yuncu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1q8my")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfhfp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vg4p6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3134u")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="sparkle" type="Area2D" unique_id=1515146724]
+script = ExtResource("1_j27fg")
+
+[node name="anim" type="AnimatedSprite2D" parent="." unique_id=976757801]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_afqup")
+animation = &"idle"
+autoplay = "idle"
+
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
