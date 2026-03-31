@@ -36,7 +36,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 4.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06wic"]
@@ -52,6 +52,7 @@ metadata/_edit_group_ = true
 [node name="anim" type="AnimatedSprite2D" parent="." unique_id=782800266]
 sprite_frames = SubResource("SpriteFrames_q5sbs")
 animation = &"idle"
+autoplay = "idle"
 
 [node name="collision" type="CollisionShape2D" parent="." unique_id=177185017]
 shape = SubResource("RectangleShape2D_06wic")

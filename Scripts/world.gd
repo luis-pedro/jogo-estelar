@@ -50,12 +50,16 @@ func _on_ground_area_entered(area: Area2D) -> void:
 	
 #Função para controlar os rounds
 func update_round():
-	if $"/root/Global".pontos >= 60 and current_round != 4:
+	var pontos = Global.pontos
+	
+	if pontos >= 60 and current_round < 4:
 		start_round(4)
-	elif $"/root/Global".pontos >= 10 and current_round != 3:
+		
+	elif pontos >= 10 and current_round < 3:
 		start_round(3)
 		$criarEnemy02.start()
-	elif $"/root/Global".pontos >= 5 and current_round != 2:
+		
+	elif pontos >= 5 and current_round < 2:
 		start_round(2)
 		$criarEnemy01.start()
 		
