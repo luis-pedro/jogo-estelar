@@ -9,3 +9,4 @@ var velEnemy02 = 70
 #outras variáveis
 var pontos = 0 #pontos da nave
 var nVida = 5 #vida da nave
+var bVida = 10 #vida do boss

@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://cwuskte5a04c1"]
+
+[ext_resource type="Script" uid="uid://cx2e4gp8blmd1" path="res://Scripts/boss.gd" id="1_db53t"]
+[ext_resource type="Texture2D" uid="uid://ci3d7c1x6jobd" path="res://Assets/Mini Pixel Pack 3/Enemies/Alan (16 x 16).png" id="1_yng7g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_db53t"]
+atlas = ExtResource("1_yng7g")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yw8yh"]
+atlas = ExtResource("1_yng7g")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0bff"]
+atlas = ExtResource("1_yng7g")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mmos"]
+atlas = ExtResource("1_yng7g")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_445a1"]
+atlas = ExtResource("1_yng7g")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kphm"]
+atlas = ExtResource("1_yng7g")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_51vr5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_db53t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yw8yh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0bff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mmos")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_445a1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kphm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5g3u"]
+size = Vector2(14, 14)
+
+[node name="boss" type="Area2D" unique_id=1062985017]
+scale = Vector2(10, 10)
+collision_layer = 2
+collision_mask = 17
+script = ExtResource("1_db53t")
+metadata/_edit_group_ = true
+
+[node name="anim" type="AnimatedSprite2D" parent="." unique_id=1187451877]
+sprite_frames = SubResource("SpriteFrames_51vr5")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="collision" type="CollisionShape2D" parent="." unique_id=218769191]
+shape = SubResource("RectangleShape2D_x5g3u")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
