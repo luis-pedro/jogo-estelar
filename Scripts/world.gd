@@ -12,6 +12,7 @@ var current_round = 1 #Controla os rounds
 @onready var bg_sound: AudioStreamPlayer = $bg_sound
 @onready var criar_asteroides: Timer = $criarAsteroides
 @onready var round_label: Label = $control/round_label
+@onready var boss_music: AudioStreamPlayer = $boss_music
 
 func _ready():
 	set_process(false) # trava o jogo no começo
@@ -36,13 +37,11 @@ func _on_aumenta_velocidade_timeout() -> void:
 func _on_criar_enemy_01_timeout() -> void:
 	var alvo01 = enemy01.instantiate()
 	add_child(alvo01)
-	print("INIMIGO 1")
 	
 #Enemy02
 func _on_criar_enemy_02_timeout() -> void:
 	var alvo02 = enemy02.instantiate()
 	add_child(alvo02)
-	print("INIMIGO 2")
 
 #Boss
 func spawn_boss():
@@ -58,8 +57,12 @@ func spawn_boss():
 #Collisão do chão do cenário
 
 func _on_ground_area_entered(area: Area2D) -> void:
-	$"/root/Global".nVida -= 1
-	print($"/root/Global".nVida)
+	if area.is_in_group("dano"):
+		$"/root/Global".nVida -= 1
+		print($"/root/Global".nVida)
+	
+#func _on_project_destroy_area_entered(area: Area2D) -> void:
+	#area.queue_free()
 	
 #Função para controlar os rounds
 func update_round():
@@ -73,8 +76,8 @@ func update_round():
 		stop_spawns()
 		spawn_boss()
 		
-		#$bg_sound.stop()
-		#$boss_music.play() -> Colocar música para o boss
+		$bg_sound.stop()
+		$boss_music.play()
 		
 	elif pontos >= 3 and current_round < 3:
 		start_round(3)

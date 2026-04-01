@@ -29,6 +29,7 @@ window/size/viewport_height=768
 collision=""
 dano=""
 bullet=""
+nave=""
 
 [input]
 

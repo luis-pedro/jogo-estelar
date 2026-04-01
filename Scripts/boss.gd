@@ -8,10 +8,19 @@ var can_take_damage := false
 
 var blink_tween
 
+var project_scene = preload("res://Players/project.tscn")
+
 @onready var anim: AnimatedSprite2D = $anim
 
 func _ready():
 	start_movement_cycle()
+	start_attack_cycle()
+	
+	#Mudar o projétil do tiro
+	if randi() % 2 == 0:
+		anim.play("project01")
+	else:
+		anim.play("project02")
 
 func _process(delta):
 	if not is_vulnerable:
@@ -96,6 +105,56 @@ func take_damage():
 	
 	exit_vulnerable_state()
 
+#TIRO
+func shoot():
+	var project = project_scene.instantiate()
+	get_parent().add_child(project)
+	project.global_position = global_position + Vector2(0, 40)
+
+#COMEÇAR A ATACAR
+func start_attack_cycle():
+	while true:
+		await get_tree().create_timer(get_attack_delay()).timeout
+		
+		if not is_vulnerable:
+			shoot_pattern()
+
+#INTENSIDADE DO TIRO
+func get_attack_delay():
+	var life = $"/root/Global".bVida
+	
+	if life > 7:
+		return 1.5
+	elif life > 3:
+		return 1.0
+	else:
+		return 0.5
+
+#PADRÕES DE TIRO
+func shoot_pattern():
+	var life = $"/root/Global".bVida
+	
+	if life > 7:
+		# tiro simples
+		shoot()
+		
+	elif life > 3:
+		# tiro duplo
+		shoot()
+		shoot_side(-50)
+		shoot_side(50)
+		
+	else:
+		# tiro triplo mais rápido
+		for offset in [-80, 0, 80]:
+			shoot_side(offset)
+
+#OFFSET
+func shoot_side(offset):
+	var project = project_scene.instantiate()
+	get_parent().add_child(project)
+	project.global_position = global_position + Vector2(offset, 40)
+	
 #MORTE
 func die():
 	print("Boss morreu")

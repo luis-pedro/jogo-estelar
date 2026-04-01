@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://ct51e2gln4eq"]
+
+[ext_resource type="Script" uid="uid://viiyn8ifnfj0" path="res://Scripts/project.gd" id="1_n74mw"]
+[ext_resource type="Texture2D" uid="uid://ddmml14jceamk" path="res://Assets/Mini Pixel Pack 3/Projectiles/Enemy_projectile (16 x 16).png" id="1_rnydm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n74mw"]
+atlas = ExtResource("1_rnydm")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8sbs3"]
+atlas = ExtResource("1_rnydm")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehpt1"]
+atlas = ExtResource("1_rnydm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_galcw"]
+atlas = ExtResource("1_rnydm")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6d1sq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n74mw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8sbs3")
+}],
+"loop": true,
+"name": &"project01",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehpt1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_galcw")
+}],
+"loop": true,
+"name": &"project02",
+"speed": 2.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j5j8m"]
+radius = 3.0
+
+[node name="project" type="Area2D" unique_id=826479414]
+scale = Vector2(5, 5)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_n74mw")
+
+[node name="anim" type="AnimatedSprite2D" parent="." unique_id=881453499]
+sprite_frames = SubResource("SpriteFrames_6d1sq")
+animation = &"project01"
+autoplay = "project01"
+
+[node name="collision" type="CollisionShape2D" parent="." unique_id=954070394]
+shape = SubResource("CircleShape2D_j5j8m")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

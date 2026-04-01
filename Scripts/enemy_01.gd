@@ -15,6 +15,11 @@ func _on_area_entered(area: Area2D) -> void:
 		
 		$"/root/Global".pontos = $"/root/Global".pontos + 1
 		destruir()
+	if area.is_in_group("collision"):
+		$"/root/Global".nVida -= 1
+		queue_free()
+	if area.is_in_group("nave"):
+		queue_free()
 		
 func destruir():
 	var sparkle = sparkle_scene.instantiate()

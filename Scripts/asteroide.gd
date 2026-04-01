@@ -17,7 +17,11 @@ func _on_area_entered(area: Area2D) -> void: #quando o bullet entra em contato
 	if area.is_in_group("bullet"):
 		$"/root/Global".pontos = $"/root/Global".pontos + 1
 		destruir()
-		
+	if area.is_in_group("collision"):
+		queue_free()
+	if area.is_in_group("nave"):
+		queue_free()
+			
 func destruir():
 	var explosion = explosion_scene.instantiate()
 	explosion.global_position = global_position
