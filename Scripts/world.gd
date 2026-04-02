@@ -73,7 +73,7 @@ func _on_ground_area_entered(area: Area2D) -> void:
 func update_round():
 	var pontos = Global.pontos
 	
-	if pontos >= 10 and current_round < 4:
+	if pontos >= 40 and current_round < 4:
 		start_round(4)
 		
 		await get_tree().create_timer(2.5).timeout
@@ -84,11 +84,11 @@ func update_round():
 		$bg_sound.stop()
 		$boss_music.play()
 		
-	elif pontos >= 5 and current_round < 3:
+	elif pontos >= 25 and current_round < 3:
 		start_round(3)
 		$criarEnemy02.start()
 		
-	elif pontos >= 2 and current_round < 2:
+	elif pontos >= 10 and current_round < 2:
 		start_round(2)
 		$criarEnemy01.start()
 		
