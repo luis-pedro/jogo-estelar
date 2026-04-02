@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://d1xym8li1l60n"]
+
+[ext_resource type="Texture2D" uid="uid://bqqgyvm82ude3" path="res://Assets/Mini Pixel Pack 3/Space_BG (2 frames) (64 x 64).png" id="1_klylv"]
+[ext_resource type="Script" uid="uid://btsveavmh0pxd" path="res://Scripts/title_screen.gd" id="1_twnyg"]
+[ext_resource type="Theme" uid="uid://cm3pbywgl7so3" path="res://Others/theme.tres" id="2_4gxqj"]
+[ext_resource type="Texture2D" uid="uid://bvcyg7y8xgvxy" path="res://Assets/Mini Pixel Pack 3/UI objects/Player_life_icon (16 x 16).png" id="3_twnyg"]
+[ext_resource type="AudioStream" uid="uid://bi086aiod1vng" path="res://Assets/audio/title_screen_sound.wav" id="5_55kwv"]
+
+[node name="TitleScreen" type="Control" unique_id=257712167]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_twnyg")
+
+[node name="background" type="TextureRect" parent="." unique_id=275380231]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_klylv")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=951993038]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.0
+offset_top = -92.0
+offset_right = 118.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=639885099]
+layout_mode = 2
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1409447221]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Estelar" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer3" unique_id=1463562547]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_4gxqj")
+theme_override_font_sizes/font_size = 42
+text = "ESTELAR"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer3" unique_id=1473302557]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer3/VBoxContainer2" unique_id=341164098]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="Restart_button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/VBoxContainer2" unique_id=914014961]
+layout_mode = 2
+theme = ExtResource("2_4gxqj")
+text = "START"
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer3/VBoxContainer2" unique_id=16309023]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="Quit_button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/VBoxContainer2" unique_id=1891095094]
+layout_mode = 2
+theme = ExtResource("2_4gxqj")
+text = "QUIT"
+
+[node name="starship" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=75401413]
+layout_mode = 2
+texture = ExtResource("3_twnyg")
+expand_mode = 2
+flip_h = true
+
+[node name="title_screen_sound" type="AudioStreamPlayer" parent="." unique_id=152954637]
+stream = ExtResource("5_55kwv")
+autoplay = true
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer3/VBoxContainer2/Restart_button" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer3/VBoxContainer2/Quit_button" to="." method="_on_quit_button_pressed"]

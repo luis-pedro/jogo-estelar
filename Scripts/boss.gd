@@ -10,6 +10,8 @@ var blink_tween
 
 var project_scene = preload("res://Players/project.tscn")
 
+signal boss_dead
+
 @onready var anim: AnimatedSprite2D = $anim
 
 func _ready():
@@ -157,5 +159,5 @@ func shoot_side(offset):
 	
 #MORTE
 func die():
-	print("Boss morreu")
+	emit_signal("boss_dead")
 	queue_free()

@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://vq6hmod5bccy" path="res://Assets/Fontes/RevMiniPixel.ttf" id="7_o06y3"]
 [ext_resource type="AudioStream" uid="uid://dnarnirouk20i" path="res://Assets/audio/backgound2.wav" id="8_k7acu"]
 [ext_resource type="AudioStream" uid="uid://3lsgy0gvb0f0" path="res://Assets/audio/boss_music.wav" id="9_5v1tr"]
+[ext_resource type="PackedScene" uid="uid://ckd8esikqghrt" path="res://Scenes/pause_menu.tscn" id="10_0fj1v"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_o06y3"]
 a = Vector2(-121, -21)
@@ -157,6 +158,8 @@ wait_time = 7.0
 
 [node name="boss_music" type="AudioStreamPlayer" parent="." unique_id=1878594888]
 stream = ExtResource("9_5v1tr")
+
+[node name="pause_menu" parent="." unique_id=1492864436 instance=ExtResource("10_0fj1v")]
 
 [connection signal="timeout" from="criarAsteroides" to="." method="_on_criar_asteroides_timeout"]
 [connection signal="timeout" from="aumentaVelocidade" to="." method="_on_aumenta_velocidade_timeout"]
