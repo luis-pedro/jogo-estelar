@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://by45qf2c6l36s"
+path="res://.godot/imported/milligreen title screen for Atari 8-bit.wav-bcccf6bbfc4b3044a63ce590502f54cd.sample"
+
+[deps]
+
+source_file="res://Assets/audio/milligreen title screen for Atari 8-bit.wav"
+dest_files=["res://.godot/imported/milligreen title screen for Atari 8-bit.wav-bcccf6bbfc4b3044a63ce590502f54cd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

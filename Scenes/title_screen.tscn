@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://btsveavmh0pxd" path="res://Scripts/title_screen.gd" id="1_twnyg"]
 [ext_resource type="Theme" uid="uid://cm3pbywgl7so3" path="res://Others/theme.tres" id="2_4gxqj"]
 [ext_resource type="Texture2D" uid="uid://bvcyg7y8xgvxy" path="res://Assets/Mini Pixel Pack 3/UI objects/Player_life_icon (16 x 16).png" id="3_twnyg"]
-[ext_resource type="AudioStream" uid="uid://dafyb7flth3eu" path="res://Assets/audio/title_screen_sound.wav" id="5_55kwv"]
+[ext_resource type="AudioStream" uid="uid://by45qf2c6l36s" path="res://Assets/audio/milligreen title screen for Atari 8-bit.wav" id="5_55kwv"]
 
 [node name="TitleScreen" type="Control" unique_id=257712167]
 layout_mode = 3
